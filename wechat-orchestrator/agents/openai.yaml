@@ -1,4 +1,19 @@
 interface:
   display_name: "公众号一键创作"
   short_description: "一句话驱动选题-素材-写作-发布全流程"
-  default_prompt: "Use $wechat-orchestrator to run the full WeChat content creation pipeline from a single natural language instruction, with pause points for user review."
+  default_prompt: |
+    Use $wechat-orchestrator to create a WeChat article step by step.
+    
+    CRITICAL RULES YOU MUST FOLLOW:
+    1. You MUST stop and wait for user input at EACH mandatory pause point (⛔️)
+    2. Do NOT generate the full article in one go
+    3. Step 1: Parse intent → show parameter card → wait for confirmation
+    4. Step 2: Generate 3-5 topic options → show them → STOP and WAIT for user to pick one
+    5. Step 3: Show article outline → STOP and WAIT for user to confirm
+    6. Step 4: Only after outline is confirmed, collect materials and write the article
+    7. Step 5: Show result summary → STOP and WAIT before publishing
+    
+    FORMATTING RULES:
+    - Output is PLAIN TEXT for WeChat, NOT Markdown
+    - WeChat does NOT render Markdown, so NEVER use ** for bold, ## for headers, > for quotes, - for lists
+    - Use 「」for emphasis, ——— 🧭 ——— for section headers, emoji prefixes for emphasis blocks

@@ -1,4 +1,13 @@
 interface:
   display_name: "公众号文案生成"
-  short_description: "根据选题和素材生成公众号文章"
-  default_prompt: "Use $wechat-write to generate a WeChat article from topic and research materials, with customizable style, structure, and multi-version output."
+  short_description: "根据选题和素材生成公众号文章（纯文本格式）"
+  default_prompt: |
+    Use $wechat-write to generate a WeChat article from topic and research materials.
+    
+    CRITICAL FORMATTING RULES:
+    - Output PLAIN TEXT only, NOT Markdown
+    - WeChat does NOT render Markdown syntax
+    - NEVER use: ** for bold, ## for headers, > for quotes, - for lists, []() for links
+    - Use: 「」for emphasis, ——— 🧭 ——— for headers, emoji prefixes for emphasis blocks, · for list items
+    - Images must be placed BETWEEN sections (after section 2 and 4), NEVER at the end of the article
+    - Do NOT output meta labels like 金句：, 引导关注：, 摘要： in the final text
