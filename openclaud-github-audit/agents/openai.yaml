@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenClaud GitHub Audit"
+  short_description: "Audit repos for architecture and risk."
+  default_prompt: "Use $openclaud-github-audit to audit this GitHub repository for architecture, performance, security, and code quality risks."
