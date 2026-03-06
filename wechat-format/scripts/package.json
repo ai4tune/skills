@@ -1,0 +1,9 @@
+{
+  "name": "wechat-format",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Markdown to WeChat-compatible HTML converter",
+  "dependencies": {
+    "markdown-it": "^14.0.0"
+  }
+}
