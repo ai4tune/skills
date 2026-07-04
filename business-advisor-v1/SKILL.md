@@ -1,6 +1,6 @@
 ---
 name: business-advisor-v1
-description: Generate boss-facing Chinese business research reports from a user research question. Use when the user asks to research an industry, market, policy, customer, competitor, product opportunity, or AI application opportunity and wants a Markdown report with a Research Plan, concrete business analysis, recommendations, risks, and source notes. Supports OpenAI-compatible gateways through OPENAI_API_KEY, OPENAI_BASE_URL, and OPENAI_MODEL.
+description: Generate boss-facing Chinese business research reports from a user research question. Use when the user asks to research an industry, market, policy, customer, competitor, product opportunity, or AI application opportunity and wants a Markdown report with a Research Plan, concrete business analysis, AI implementation suggestions, recommendations, risks, and source notes. Supports OpenAI-compatible gateways through OPENAI_API_KEY, OPENAI_BASE_URL, and OPENAI_MODEL.
 ---
 
 # Business Advisor
@@ -85,4 +85,6 @@ Return `reportMarkdown` to the user unless they explicitly ask for the raw JSON.
 - Do not fabricate real links, policies, reports, ratings, or company evidence.
 - If no `sourceMaterials` are provided, the `# 来源` section must say the report did not use external search.
 - Keep the report useful for a business owner: conclusion first, concrete analysis, clear recommendations, and AI opportunities split into immediate, needs-validation, and not-recommended.
+- AI suggestions should include an implementation path, not just a list of ideas: business scenario, first step, required data or team support, and 2-4 week validation metric.
+- When appropriate, mention external AI consulting, implementation partners, or lightweight prototype support as one option, but keep the language neutral and avoid promotional claims.
 - Do not broaden this skill into crawler, workflow, memory, or multi-agent logic. Add those as later versions.

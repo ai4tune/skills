@@ -3,7 +3,7 @@
   "name": "老板智囊",
   "version": "1.0.0",
   "status": "mvp",
-  "description": "为企业老板生成可用于商业判断的研究报告，覆盖行业、产品、竞品、客户、市场和政策研究。",
+  "description": "为企业老板生成可用于商业判断的研究报告，覆盖行业、产品、竞品、客户、市场、政策研究和 AI 落地建议。",
   "entry": "scripts/run.mjs",
   "inputSchema": "schemas/input.schema.json",
   "outputSchema": "schemas/output.schema.json",
@@ -16,7 +16,8 @@
     "research_plan",
     "markdown_report",
     "business_recommendations",
-    "ai_opportunity_analysis"
+    "ai_opportunity_analysis",
+    "ai_implementation_suggestions"
   ],
   "runtime": {
     "type": "openai-compatible-chat-completions",

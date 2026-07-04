@@ -1,6 +1,6 @@
 # OpenClaw Skills 工具集
 
-一套精简的 AI 效率工具链，包含四个 skill：
+一套精简的 AI 效率工具链，包含 7 个 skill：
 
 | Skill | 功能 |
 |-------|------|
@@ -8,6 +8,9 @@
 | **wechat-format** | Markdown → 微信公众号排版（Node.js 脚本） |
 | **ai-daily-digest** | AI 资讯日报（90 个顶级博客 RSS → AI 评分筛选 → 每日精选） |
 | **resume-analyzer** | 智能简历分析（多维评分 + 大五人格 + JD 匹配） |
+| **poster-generator** | 营销海报生成（需求提炼 → 海报方案 → 确认后生成） |
+| **business-advisor-v1** | 面向老板的中文商业研究报告（研究计划 + 分析建议 + AI 落地建议 + 风险提示） |
+| **openclaud-github-audit** | GitHub 仓库审计（架构、性能、安全、可靠性、可维护性） |
 
 ## 快速开始
 
@@ -23,12 +26,18 @@ cp -r wechat-write ~/.openclaw/skills/
 cp -r wechat-format ~/.openclaw/skills/
 cp -r ai-daily-digest ~/.openclaw/skills/
 cp -r resume-analyzer ~/.openclaw/skills/
+cp -r poster-generator ~/.openclaw/skills/
+cp -r business-advisor-v1 ~/.openclaw/skills/
+cp -r openclaud-github-audit ~/.openclaw/skills/
 
 # 或项目级安装（仅当前项目可用）
 cp -r wechat-write <你的项目>/skills/
 cp -r wechat-format <你的项目>/skills/
 cp -r ai-daily-digest <你的项目>/skills/
 cp -r resume-analyzer <你的项目>/skills/
+cp -r poster-generator <你的项目>/skills/
+cp -r business-advisor-v1 <你的项目>/skills/
+cp -r openclaud-github-audit <你的项目>/skills/
 ```
 
 复制后重启 OpenClaw Gateway 即可生效。
@@ -52,6 +61,9 @@ cd wechat-format/scripts && npm install
 
 # 简历解析脚本依赖（只需一次）
 cd resume-analyzer/scripts && npm install
+
+# 商业研究报告脚本依赖（如需本地运行）
+cd business-advisor-v1 && npm install
 
 # ai-daily-digest 无需安装，运行时通过 npx -y bun 自动处理
 ```
@@ -87,6 +99,45 @@ cd resume-analyzer/scripts && npm install
 ```
 
 支持在同一对话中随时追加 JD 进行匹配分析。
+
+---
+
+### 🧾 商业研究报告
+
+在 OpenClaw 中触发 `business-advisor-v1` 技能，适合研究行业、市场、政策、客户、竞品、产品机会或 AI 应用机会：
+
+```bash
+cd business-advisor-v1
+npm run dry-run
+```
+
+如果要调用 OpenAI 兼容接口生成正式报告，需要提供 `OPENAI_API_KEY`，也可以通过 `OPENAI_BASE_URL` 和 `OPENAI_MODEL` 接入自定义网关。
+
+---
+
+### 🧪 GitHub 仓库审计
+
+在 OpenClaw 中触发 `openclaud-github-audit` 技能，用于对 GitHub 仓库、PR 或代码库做技术尽调：
+
+```
+1. 确认审计范围（整个仓库、子目录、分支 diff 或 PR）
+2. 建立项目上下文（结构、依赖、入口、CI、部署配置）
+3. 从架构、性能、安全、可靠性、可维护性等维度审计
+4. 输出按严重程度排序的发现和修复建议
+```
+
+---
+
+### 🖼️ 营销海报生成
+
+在 OpenClaw 中触发 `poster-generator` 技能，适合活动海报、促销海报、招聘海报、公告海报等场景：
+
+```
+1. 从你的原始描述中提取目标、标题、时间、地点、卖点、CTA 等信息
+2. 只追问最关键的缺失信息
+3. 先输出海报方案，等待确认
+4. 确认后再生成最终海报
+```
 
 ---
 
@@ -150,18 +201,45 @@ skills/
 │   ├── SKILL.md                 # 技能说明（分析 + 打分 + 人格 + JD 匹配）
 │   ├── scripts/
 │   │   ├── parse-resume.mjs     # PDF/Word 文本提取
+│   │   ├── generate-report-pdf.mjs
 │   │   └── package.json         # 依赖声明
 │   └── references/
 │       ├── scoring-criteria.md  # 四维评分标准
 │       └── personality-model.md # 大五人格分析框架
 │
+├── poster-generator/            # 营销海报生成 Skill
+│   ├── SKILL.md                 # 技能说明（方案优先→确认后生成）
+│   ├── agents/openai.yaml       # AI 模型配置
+│   └── references/
+│       ├── poster-brief-template.md
+│       ├── layout-rules.md
+│       ├── style-presets.md
+│       └── workflow.md
+│
+├── business-advisor-v1/          # 商业研究报告 Skill
+│   ├── SKILL.md                 # 技能说明（研究计划→Markdown 报告）
+│   ├── skill.json               # Skill 元信息
+│   ├── scripts/
+│   │   ├── run.mjs              # 报告生成脚本
+│   │   └── install.mjs          # 安装脚本
+│   ├── schemas/                 # 输入/输出 JSON Schema
+│   ├── prompts/                 # 报告提示词
+│   └── examples/                # 示例输入
+│
+├── openclaud-github-audit/       # GitHub 仓库审计 Skill
+│   ├── SKILL.md                 # 技能说明（架构/性能/安全/质量审计）
+│   ├── agents/openai.yaml       # AI 模型配置
+│   └── references/
+│       ├── audit-checklists.md  # 审计检查清单
+│       └── report-template.md   # 报告模板
+│
 ├── wechat-write/                # 文章创作 Skill
 │   ├── SKILL.md                 # 技能说明（选题→写作→自检）
 │   ├── agents/openai.yaml       # AI 模型配置
-│   └── references/
-│       ├── style-guide.md       # 写作风格规范
-│       ├── article-template.md  # Markdown 文章模板
-│       └── self-check.md        # 五维度质量自检
+│   ├── references/
+│   │   ├── style-guide.md       # 写作风格规范
+│   │   └── self-check.md        # 五维度质量自检
+│   └── templates/               # 文章模板
 │
 └── wechat-format/               # 排版格式化 Skill
     ├── SKILL.md                 # 技能说明
