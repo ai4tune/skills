@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BusinessAdvisorOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["researchPlan", "reportMarkdown"],
+  "properties": {
+    "researchPlan": {
+      "type": "string"
+    },
+    "reportMarkdown": {
+      "type": "string"
+    },
+    "sourceCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "model": {
+      "type": "string"
+    }
+  }
+}

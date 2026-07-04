@@ -1,0 +1,3 @@
+interface:
+  display_name: "Poster Generator"
+  short_description: "Turn a one-line brief into a poster plan and final poster"

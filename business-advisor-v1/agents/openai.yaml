@@ -1,0 +1,6 @@
+interface:
+  display_name: "老板智囊"
+  short_description: "生成老板看的商业研究报告"
+  default_prompt: "Use $business-advisor-v1 to research a market, competitor, policy, product opportunity, or AI application opportunity and return a Markdown business report."
+policy:
+  allow_implicit_invocation: true

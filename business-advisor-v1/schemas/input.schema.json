@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BusinessAdvisorInput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["question"],
+  "properties": {
+    "question": {
+      "type": "string",
+      "minLength": 6,
+      "description": "老板提出的研究问题，例如：帮我研究天津木地板行业未来三年的趋势。"
+    },
+    "focusAreas": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": [],
+      "description": "重点关注方向，例如竞争、价格、AI机会。"
+    },
+    "sourceMaterials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "content"],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      },
+      "default": [],
+      "description": "V1 可由 Firecrawl/Tavily 注入；V0 可为空。"
+    },
+    "language": {
+      "type": "string",
+      "enum": ["zh-CN"],
+      "default": "zh-CN"
+    }
+  }
+}

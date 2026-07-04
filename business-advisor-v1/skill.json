@@ -1,0 +1,39 @@
+{
+  "id": "business-advisor-v1",
+  "name": "老板智囊",
+  "version": "1.0.0",
+  "status": "mvp",
+  "description": "为企业老板生成可用于商业判断的研究报告，覆盖行业、产品、竞品、客户、市场和政策研究。",
+  "entry": "scripts/run.mjs",
+  "inputSchema": "schemas/input.schema.json",
+  "outputSchema": "schemas/output.schema.json",
+  "prompts": {
+    "system": "prompts/system.md",
+    "researchPlan": "prompts/research-plan.md",
+    "report": "prompts/report.md"
+  },
+  "capabilities": [
+    "research_plan",
+    "markdown_report",
+    "business_recommendations",
+    "ai_opportunity_analysis"
+  ],
+  "runtime": {
+    "type": "openai-compatible-chat-completions",
+    "env": {
+      "apiKey": "OPENAI_API_KEY",
+      "baseUrl": "OPENAI_BASE_URL",
+      "model": "OPENAI_MODEL"
+    },
+    "defaults": {
+      "baseUrl": "https://api.openai.com/v1",
+      "model": "gpt-4.1"
+    }
+  },
+  "roadmap": {
+    "v0": "GPT-only report generation with fixed research workflow.",
+    "v1": "Add Firecrawl or Tavily search results as source material.",
+    "v2": "Add planner, evidence review, and citation quality checks.",
+    "v3": "Split planning, search, evidence, writing, and review into multiple agents."
+  }
+}

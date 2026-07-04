@@ -1,0 +1,12 @@
+{
+  "name": "resume-parser",
+  "version": "1.0.0",
+  "private": true,
+  "description": "简历文件解析工具 - 支持 PDF 和 Word 格式",
+  "type": "module",
+  "dependencies": {
+    "mammoth": "^1.8.0",
+    "pdf-parse": "^1.1.1",
+    "pdfkit": "^0.15.2"
+  }
+}

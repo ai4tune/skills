@@ -1,0 +1,31 @@
+{
+  "name": "business-advisor-skill",
+  "version": "1.0.0",
+  "description": "A lightweight Deep Research-style business advisor skill for enterprise owners.",
+  "type": "module",
+  "bin": {
+    "business-advisor-skill": "./scripts/run.mjs"
+  },
+  "scripts": {
+    "dry-run": "node scripts/run.mjs --input examples/tianjin-flooring.input.json --dry-run",
+    "install-skill": "node scripts/install.mjs",
+    "validate": "node scripts/run.mjs --input examples/tianjin-flooring.input.json --dry-run"
+  },
+  "files": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "README.md",
+    "SKILL.md",
+    "agents",
+    "examples",
+    "prompts",
+    "schemas",
+    "scripts",
+    "skill.json"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}
